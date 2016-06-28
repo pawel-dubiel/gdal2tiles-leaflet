@@ -51,8 +51,12 @@ L.RasterCoords.prototype = {
 	 * sets the max bounds on map
 	 */
 	setMaxBounds: function() {
+		this.map.setMaxBounds(this.getMaxBounds());
+	},
+	getMaxBounds: function() {
 		var southWest = this.unproject([0, this.height]);
 		var northEast = this.unproject([this.width, 0]);
-		this.map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
+		return new L.LatLngBounds(southWest, northEast);
 	}
+
 };
